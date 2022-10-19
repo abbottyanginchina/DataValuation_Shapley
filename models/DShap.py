@@ -1,6 +1,9 @@
 import numpy as np
 import os
 import warnings
+
+import torch.random
+
 from models.Nets import return_model
 from utils.parameters import args_parser
 args = args_parser()
@@ -45,7 +48,7 @@ class DShap(object):
 
         if seed is not None:
             np.random.seed(seed)
-            tf.random.set_random_seed(seed)
+            torch.random.seed(seed)
         self.problem = problem
         self.model_family = model_family
         self.metric = metric
